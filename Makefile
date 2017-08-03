@@ -1,16 +1,4 @@
-
-ARCH = arm
-
-CROSS_DIR =
-CROSS_COMPILE	= $(CROSS_DIR)
-
-CC =  $(CROSS_COMPILE)g++
-CCP= $(CROSS_COMPILE)g++
-LD = $(CROSS_COMPILE)ld
-STRIP=$(CROSS_COMPILE)strip
-AR = $(CROSS_COMPILE)ar
-AS = $(CROSS_COMPILE)as
-
+CC =  g++
 
 SRCS+= \
 	main.cpp \
@@ -26,22 +14,18 @@ SRCS+= \
 	CMsgQueue.cpp \
 	CLinuxMsgQueue.cpp \
 	TestThreadB.cpp
-	
-
 
 OBJS = $(SRCS:.cpp=.o)
-
-
 
 TARGET=operation
 
 $(TARGET):$(OBJS)
-	@echo "Makeing $(TARGET)..."
+	@echo "Making $(TARGET)..."
 	$(CC) $(OBJS) -o $(TARGET) $(LIB) -lpthread
 
 
 %.o:%.cpp
-	@echo "=======>>Makeing $(CC) -w -c -o $<"
+	@echo "=======>>Making $(CC) $< -w -c -o $@"
 	@$(CC) $(CFLAGS) -c $< -w -o $@
 
 

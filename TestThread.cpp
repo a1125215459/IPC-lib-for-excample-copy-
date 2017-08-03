@@ -16,8 +16,7 @@ CThread(m_name)
 {
 
 	//add your code here
-	
-
+	printf("I'm in TestThreadA\n");
 
 }
 

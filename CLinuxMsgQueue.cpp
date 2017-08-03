@@ -16,10 +16,7 @@ CMsgQueue(pName)
 
 
 
-CLinuxMsgQueue::~CLinuxMsgQueue()
-{
-
-}
+CLinuxMsgQueue::~CLinuxMsgQueue(){}
 
 
 
@@ -29,7 +26,7 @@ bool CLinuxMsgQueue::recvMsg(unsigned int &m_msg_code,void *&p_msg)
 {
 
  	bool result;
-    	Elements queue_element;
+    Elements queue_element;
 
 	p_sem->Get();
 
@@ -63,9 +60,7 @@ bool CLinuxMsgQueue::recvMsg(unsigned int &m_msg_code,void *&p_msg)
 bool CLinuxMsgQueue::sendMsg(unsigned int m_msg_code,void *p_msg)
 {
 	bool result;
-    	Elements queue_element;
-
-	
+    Elements queue_element;
 
 	queue_element.msg_code=m_msg_code;
 	queue_element.p_message=p_msg;

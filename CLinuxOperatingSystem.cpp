@@ -72,18 +72,18 @@ bool CLinuxOperatingSystem::createThread(CThread *mThread,unsigned long stack_si
 
 	p_sem=COperatingSystemFactory::newCountingSem(0);
 
-	pthread_attr_init(&mThreadAttr);  //线程属性初始化
+	pthread_attr_init(&mThreadAttr);
 	pthread_attr_setschedpolicy(&mThreadAttr, SCHED_FIFO);
 	pthread_attr_setscope(&mThreadAttr, PTHREAD_SCOPE_SYSTEM);
 	pthread_attr_setstacksize(&mThreadAttr, stack_size);
-   	//pthread_attr_setinheritsched(&mThreadAttr, PTHREAD_EXPLICIT_SCHED);
+   	// pthread_attr_setinheritsched(&mThreadAttr, PTHREAD_EXPLICIT_SCHED);
 
 	
 	memset(arguments, 0, sizeof(arguments));
-	arguments[0] = (unsigned long) p_thread;   //参数传递
+	arguments[0] = (unsigned long) p_thread;   
 	arguments[1] = (unsigned long) p_sem;
 	//printf("Thread2....%ld,OS:%ld\n",arguments[0],(unsigned long) p_thread);
-	rc = pthread_create(&mThreadId, &mThreadAttr, (void * (*) (void *))threadEntry, arguments);      //启动ThreadEntrypoint函数创建实在线程
+	rc = pthread_create(&mThreadId, &mThreadAttr, (void * (*) (void *))threadEntry, arguments);      //ThreadEntrypoint
 
 	if (rc != 0){            
 		printf("CLinuxOperatingSystem::CreateThread() : Failed to create and start the thread! ");
